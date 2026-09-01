@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css?v=20260901-3">
+  <link rel="stylesheet" href="/style.css?v=20260901-4">
 </head>
 <body class="page-home" data-page="home">
   <header class="site-header">
@@ -19,12 +19,9 @@
     <nav class="main-nav" aria-label="Primary navigation">
       <a href="/finds/" data-en="FINDS" data-ko="발견">FINDS</a>
       <a href="/archive/" data-en="ARCHIVE" data-ko="아카이브">ARCHIVE</a>
-      <a href="/about/" data-en="ABOUT" data-ko="소개">ABOUT</a>
     </nav>
     <div class="header-actions">
-      <button class="lang-toggle" type="button" aria-label="한국어로 보기" title="한국어로 보기">
-        <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg>
-      </button>
+      <button class="lang-toggle" type="button" aria-label="한국어로 보기" title="한국어로 보기"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg></button>
       <button class="menu-toggle" type="button" aria-label="Open menu">MENU</button>
     </div>
   </header>
@@ -45,40 +42,29 @@
 
       <button class="featured-card" data-track="1" aria-label="Open Lost by Frank Ocean">
         <div class="featured-cover" id="featuredCover"></div>
-        <div class="featured-info">
-          <div>
-            <span class="micro">ARCHIVE 1</span>
-            <h2>Lost</h2>
-            <p>Frank Ocean</p>
-          </div>
-          <p class="featured-note">“Love lost”</p>
-        </div>
+        <div class="featured-info"><div><span class="micro">ARCHIVE 1</span><h2>Lost</h2><p>Frank Ocean</p></div><p class="featured-note">“Love lost”</p></div>
       </button>
     </section>
 
     <section class="home-preview shell">
-      <div class="section-kicker">
-        <span data-en="LATEST FINDS" data-ko="최근 발견">LATEST FINDS</span>
-        <a href="/finds/" data-en="VIEW ALL ↗" data-ko="전체 보기 ↗">VIEW ALL ↗</a>
-      </div>
+      <div class="section-kicker"><span data-en="LATEST FINDS" data-ko="최근 발견">LATEST FINDS</span><a href="/finds/" data-en="VIEW ALL ↗" data-ko="전체 보기 ↗">VIEW ALL ↗</a></div>
       <div class="visual-grid preview-grid" id="homeGrid"></div>
     </section>
   </main>
 
   <footer class="site-footer shell">
-    <div class="footer-mark">ARCHFNDR</div>
-    <div class="footer-meta"><span data-en="CURATED IN SEOUL" data-ko="서울에서 큐레이션">CURATED IN SEOUL</span><span>© <span id="year"></span></span></div>
+    <div class="footer-row">
+      <a class="footer-mark" href="/">ARCHFNDR</a>
+      <a class="footer-social" href="https://instagram.com/wh3n_5005" target="_blank" rel="noopener" aria-label="Instagram @wh3n_5005">
+        <span class="footer-seal" aria-hidden="true"><svg viewBox="0 0 64 64"><circle class="seal-ring" cx="32" cy="32" r="29"/><path class="seal-a" d="M18 45 29.5 17h5L46 45h-7l-2.2-5.8H27.2L25 45h-7Zm11.3-11.4h5.4L32 26.3l-2.7 7.3Z"/><circle class="seal-dot" cx="49" cy="16" r="3.8"/></svg></span>
+        <span class="footer-ig"><small>INSTAGRAM</small><strong>@wh3n_5005</strong><b>↗</b></span>
+      </a>
+    </div>
+    <div class="footer-meta"><span>© <span id="year"></span> ARCHFNDR</span></div>
   </footer>
 
-  <aside class="track-drawer" id="trackDrawer" aria-hidden="true">
-    <button class="drawer-backdrop" data-close-drawer aria-label="Close"></button>
-    <div class="drawer-panel">
-      <button class="drawer-close" data-close-drawer aria-label="Close">×</button>
-      <div id="drawerContent"></div>
-    </div>
-  </aside>
-
-  <script src="/songs.js?v=20260901-3"></script>
-  <script src="/script.js?v=20260901-3"></script>
+  <aside class="track-drawer" id="trackDrawer" aria-hidden="true"><button class="drawer-backdrop" data-close-drawer aria-label="Close"></button><div class="drawer-panel"><button class="drawer-close" data-close-drawer aria-label="Close">×</button><div id="drawerContent"></div></div></aside>
+  <script src="/songs.js?v=20260901-4"></script>
+  <script src="/script.js?v=20260901-4"></script>
 </body>
 </html>
