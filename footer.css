@@ -1,0 +1,19 @@
+.site-footer{padding:34px 0 24px;border-top:1px solid var(--line)}
+.footer-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:34px}
+.footer-mark{font-size:clamp(52px,10.2vw,160px);font-weight:700;line-height:.82;letter-spacing:-.08em;overflow:hidden}
+.footer-social{display:flex;align-items:center;gap:14px;padding:7px 0 8px;border-bottom:1px solid currentColor;opacity:.76;transition:opacity .2s ease}
+.footer-social:hover{opacity:1}
+.footer-seal{width:54px;height:54px;display:block;flex:0 0 auto;transition:transform .35s ease}
+.footer-social:hover .footer-seal{transform:rotate(12deg)}
+.footer-seal svg{display:block;width:100%;height:100%;overflow:visible}
+.seal-ring{fill:none;stroke:currentColor;stroke-width:1.35}
+.seal-a{fill:currentColor}
+.seal-dot{fill:var(--acid)}
+.footer-ig{min-width:158px;display:grid;grid-template-columns:1fr auto;align-items:end;column-gap:18px;font-family:"DM Mono",monospace;text-transform:uppercase}
+.footer-ig small{grid-column:1/-1;margin-bottom:3px;font-size:8px;letter-spacing:.12em;opacity:.48}
+.footer-ig strong{font-size:11px;letter-spacing:.055em;font-weight:400}
+.footer-ig b{font-size:13px;font-weight:400}
+.footer-meta{display:flex;justify-content:flex-end;margin-top:18px;font-family:"DM Mono",monospace;font-size:8px;letter-spacing:.08em;color:#66635f;text-transform:uppercase}
+.page-archive .site-footer{border-color:#777}
+.page-archive .footer-meta{color:#4e4e4e}
+@media(max-width:700px){.footer-row{grid-template-columns:1fr;gap:28px}.footer-mark{font-size:clamp(54px,19vw,100px)}.footer-social{width:max-content;max-width:100%}.footer-seal{width:46px;height:46px}.footer-meta{justify-content:flex-start;margin-top:20px}}
