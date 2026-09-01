@@ -31,7 +31,7 @@ const copy = {
     scroll: 'SCROLL TO BROWSE',
     latest: 'LATEST FINDS',
     rotation: 'Current rotation',
-    filters: { all: 'ALL', 'late-night': 'LATE NIGHT', warm: 'WARM', 'left-field': 'LEFT FIELD' },
+    filters: { all: 'ALL', 'late-night': '1', warm: '2', 'left-field': '3' },
     tracks: [
       'Soft edges, grainy intimacy, a room that feels warmer after midnight.',
       'Guitar tones that sound half-corroded, half-heavenly.',
@@ -68,7 +68,7 @@ const copy = {
     scroll: '아래로 둘러보기',
     latest: '최근 발견',
     rotation: '요즘 듣는 것들',
-    filters: { all: '전체', 'late-night': '늦은 밤', warm: '따뜻한', 'left-field': '낯선 것들' },
+    filters: { all: '전체', 'late-night': '1', warm: '2', 'left-field': '3' },
     tracks: [
       '부드러운 결, 거친 친밀감. 자정이 지나면 방 안이 조금 더 따뜻해지는 듯한 곡.',
       '반쯤 부식되고 반쯤 천국 같은 기타 톤.',
@@ -131,7 +131,10 @@ function applyLanguage(language) {
   langToggle.setAttribute('aria-label', t.switchAria);
 
   const heroTitle = document.querySelector('.hero-copy h1');
-  if (heroTitle) heroTitle.innerHTML = t.hero;
+  if (heroTitle) {
+    heroTitle.innerHTML = t.hero;
+    heroTitle.style.lineHeight = '0.98';
+  }
   const heroLede = document.querySelector('.hero-lede');
   if (heroLede) heroLede.textContent = t.lede;
   setLeadingText(document.querySelector('.hero .text-link'), t.start);
