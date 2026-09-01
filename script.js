@@ -13,6 +13,12 @@ headerActions.className = 'header-actions';
 const langToggle = document.createElement('button');
 langToggle.type = 'button';
 langToggle.className = 'lang-toggle';
+langToggle.innerHTML = '<svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg>';
+langToggle.style.display = 'grid';
+langToggle.style.placeItems = 'center';
+langToggle.style.width = '34px';
+langToggle.style.height = '34px';
+langToggle.style.padding = '0';
 siteHeader.appendChild(headerActions);
 headerActions.appendChild(langToggle);
 headerActions.appendChild(menuBtn);
@@ -52,7 +58,6 @@ const copy = {
     openSpotify: 'Open in Spotify ↗',
     openApple: 'Open in Apple Music ↗',
     openYoutube: 'Open in YouTube ↗',
-    switchLabel: '한국어',
     switchAria: '한국어로 보기'
   },
   ko: {
@@ -89,7 +94,6 @@ const copy = {
     openSpotify: 'Spotify에서 열기 ↗',
     openApple: 'Apple Music에서 열기 ↗',
     openYoutube: 'YouTube에서 열기 ↗',
-    switchLabel: 'EN',
     switchAria: 'View in English'
   }
 };
@@ -127,8 +131,8 @@ function applyLanguage(language) {
   if (navLinks[1]) navLinks[1].textContent = t.archive;
   if (navLinks[2]) navLinks[2].textContent = t.about;
   menuBtn.textContent = t.menu;
-  langToggle.textContent = t.switchLabel;
   langToggle.setAttribute('aria-label', t.switchAria);
+  langToggle.setAttribute('title', t.switchAria);
 
   const heroTitle = document.querySelector('.hero-copy h1');
   if (heroTitle) {
