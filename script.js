@@ -1,7 +1,12 @@
 const footerStylesheet = document.createElement('link');
 footerStylesheet.rel = 'stylesheet';
-footerStylesheet.href = '/footer.css?v=20260901-1';
+footerStylesheet.href = '/footer.css?v=20260901-2';
 document.head.appendChild(footerStylesheet);
+
+const MEDIA = window.ARCHFNDR_MEDIA || {};
+document.querySelectorAll('.footer-seal').forEach((seal) => {
+  if (MEDIA.logo) seal.innerHTML = `<img src="${MEDIA.logo}" alt="" aria-hidden="true">`;
+});
 
 const TRACKS = window.ARCHFNDR_TRACKS || [];
 const body = document.body;
