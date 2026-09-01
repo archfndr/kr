@@ -1,3 +1,8 @@
+const footerStylesheet = document.createElement('link');
+footerStylesheet.rel = 'stylesheet';
+footerStylesheet.href = '/footer.css?v=20260901-1';
+document.head.appendChild(footerStylesheet);
+
 const TRACKS = window.ARCHFNDR_TRACKS || [];
 const body = document.body;
 const page = body.dataset.page || 'home';
