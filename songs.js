@@ -18,38 +18,38 @@ window.ARCHFNDR_TRACKS = [
   },
   {
     id: 2,
-    slug: 'skin',
-    title: 'Skin',
-    artist: 'Dijon',
-    album: 'Absolutely',
-    genres: ['R&B', 'SOUL'],
-    cover: '',
-    tone: 'sand',
-    comment: { en: 'Close enough to hear the room.', ko: '방의 공기까지 들릴 만큼 가까운 곡.' },
-    description: {
-      en: 'Soft edges, grainy intimacy, and a vocal that feels less recorded than overheard.',
-      ko: '부드러운 결, 거친 친밀감, 녹음이라기보다 우연히 엿들은 듯한 보컬.'
-    },
-    spotify: 'https://open.spotify.com/search/Dijon%20Skin',
-    apple: 'https://music.apple.com/us/search?term=Dijon%20Skin',
-    youtube: 'https://www.youtube.com/results?search_query=Dijon+Skin'
-  },
-  {
-    id: 3,
-    slug: 'are-you-looking-up',
-    title: 'Are You Looking Up',
+    slug: 'alesis',
+    title: 'Alesis',
     artist: 'Mk.gee',
     album: 'Two Star & The Dream Police',
     genres: ['ALT', 'NEO-PSYCH'],
     cover: 'https://coverartarchive.org/release/ec873d45-a37c-4738-b817-36d8cc3591e9/front-500',
-    comment: { en: 'Half-corroded, half-heavenly.', ko: '반쯤 부식되고 반쯤 천국 같은 소리.' },
+    comment: { en: 'Blurred edges, sharp feeling.', ko: '흐릿한 질감 속에 또렷하게 남는 감정.' },
     description: {
-      en: 'Guitar tones that feel damaged in exactly the right way.',
-      ko: '망가진 듯한 질감이 오히려 정확하게 아름다운 기타 톤.'
+      en: 'A warped, close-up kind of song — damaged textures held together by something strangely tender.',
+      ko: '뒤틀린 질감과 가까운 거리감이 묘하게 다정한 감정으로 이어지는 곡.'
     },
-    spotify: 'https://open.spotify.com/search/Mk.gee%20Are%20You%20Looking%20Up',
-    apple: 'https://music.apple.com/us/search?term=Mk.gee%20Are%20You%20Looking%20Up',
-    youtube: 'https://www.youtube.com/results?search_query=Mk.gee+Are+You+Looking+Up'
+    spotify: 'https://open.spotify.com/search/Mk.gee%20Alesis',
+    apple: 'https://music.apple.com/us/search?term=Mk.gee%20Alesis',
+    youtube: 'https://www.youtube.com/results?search_query=Mk.gee+Alesis'
+  },
+  {
+    id: 3,
+    slug: 'baby',
+    title: 'Baby',
+    artist: 'Dijon',
+    album: '—',
+    genres: ['R&B', 'SOUL'],
+    cover: window.ARCHFNDR_MEDIA?.baby || '',
+    tone: 'sand',
+    comment: { en: 'Joy caught mid-motion.', ko: '움직이는 순간 그대로 붙잡힌 기쁨.' },
+    description: {
+      en: 'Loose, physical, and alive — the room matters just as much as the song itself.',
+      ko: '느슨하고 육체적이며 살아 있다. 곡 자체만큼 그 공간의 공기까지 중요하게 느껴지는 음악.'
+    },
+    spotify: 'https://open.spotify.com/search/Dijon%20Baby',
+    apple: 'https://music.apple.com/us/search?term=Dijon%20Baby',
+    youtube: 'https://www.youtube.com/results?search_query=Dijon+Baby'
   },
   {
     id: 4,
