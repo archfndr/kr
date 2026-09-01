@@ -1,1 +1,66 @@
-const $=s=>document.querySelector(s),e={date:$('#pickDate'),cover:$('#coverImage'),title:$('#songTitle'),artist:$('#artistName'),comment:$('#shortComment'),spotify:$('#spotifyLink'),apple:$('#appleLink'),youtube:$('#youtubeLink'),index:$('#indexMark'),details:$('#detailsDialog'),archive:$('#archiveDialog'),grid:$('#archiveGrid')};const fmt=(d,l=false)=>new Intl.DateTimeFormat('en-GB',l?{day:'2-digit',month:'long',year:'numeric'}:{day:'2-digit',month:'short',year:'numeric'}).format(new Date(d+'T12:00:00')).toUpperCase();function setDetails(s){$('#detailTitle').textContent=s.title;$('#detailArtist').textContent=s.artist;$('#longComment').textContent=s.description||'';$('#albumName').textContent=s.album||'—';$('#releaseYear').textContent=s.released||'—';$('#archivedDate').textContent=fmt(s.date,true)}function render(){const s=songs[0];document.title=`${s.title} — ${s.artist} | ARCHFNDR`;e.date.textContent=fmt(s.date);e.cover.src=s.cover;e.cover.alt=`${s.album} cover`;e.title.textContent=s.title;e.artist.textContent=s.artist;e.comment.textContent=`“${s.comment}”`;e.spotify.href=s.spotify;e.apple.href=s.apple;e.youtube.href=s.youtube;e.index.textContent=`PICK 001 / ${String(songs.length).padStart(3,'0')}`;setDetails(s);e.grid.innerHTML='';songs.forEach(s=>{const b=document.createElement('button');b.className='archive-card';b.innerHTML=`<img src="${s.cover}" alt="${s.album} cover"><h3>${s.title}</h3><p>${s.artist} · ${fmt(s.date)}</p>`;b.onclick=()=>{setDetails(s);e.archive.close();e.details.showModal()};e.grid.appendChild(b)})}$('#detailsButton').onclick=()=>e.details.showModal();$('#closeDetails').onclick=()=>e.details.close();$('#archiveButton').onclick=()=>e.archive.showModal();$('#closeArchive').onclick=()=>e.archive.close();[e.details,e.archive].forEach(d=>d.addEventListener('click',x=>{const r=d.getBoundingClientRect();if(x.clientX<r.left||x.clientX>r.right||x.clientY<r.top||x.clientY>r.bottom)d.close()}));render();
+const filters = document.querySelectorAll('.filter');
+const cards = document.querySelectorAll('.track-card');
+const menuBtn = document.getElementById('menuBtn');
+const nav = document.querySelector('.nav');
+const quickFind = document.getElementById('quickFind');
+const dialogTitle = document.getElementById('dialogTitle');
+const dialogLinks = document.getElementById('dialogLinks');
+const dialogClose = document.getElementById('dialogClose');
+
+filters.forEach((button) => {
+  button.addEventListener('click', () => {
+    filters.forEach((item) => item.classList.remove('active'));
+    button.classList.add('active');
+
+    const filter = button.dataset.filter;
+    cards.forEach((card) => {
+      const tags = card.dataset.tags.split(' ');
+      card.classList.toggle('is-hidden', filter !== 'all' && !tags.includes(filter));
+    });
+  });
+});
+
+menuBtn.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', String(open));
+});
+
+document.querySelectorAll('.nav a').forEach((link) => {
+  link.addEventListener('click', () => {
+    nav.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  });
+});
+
+document.querySelectorAll('.archive-row').forEach((row) => {
+  row.addEventListener('click', () => {
+    const query = row.dataset.query;
+    dialogTitle.textContent = row.querySelector('strong').textContent;
+    const encoded = encodeURIComponent(query);
+    dialogLinks.innerHTML = `
+      <a target="_blank" rel="noopener" href="https://open.spotify.com/search/${encoded}">Open in Spotify ↗</a>
+      <a target="_blank" rel="noopener" href="https://music.apple.com/us/search?term=${encoded}">Open in Apple Music ↗</a>
+      <a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encoded}">Open in YouTube ↗</a>
+    `;
+    quickFind.showModal();
+  });
+});
+
+dialogClose.addEventListener('click', () => quickFind.close());
+quickFind.addEventListener('click', (event) => {
+  const rect = quickFind.getBoundingClientRect();
+  const outside = event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
+  if (outside) quickFind.close();
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+document.getElementById('year').textContent = new Date().getFullYear();
