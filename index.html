@@ -11,11 +11,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css?v=20260901-5">
+  <link rel="stylesheet" href="/style.css?v=20260902-1">
 </head>
 <body class="page-home" data-page="home">
   <header class="site-header">
-    <a class="brand" href="/">ARCHFNDR<span>.</span></a>
+    <a class="brand" href="/" aria-label="ArchFndr home"><span class="brand-logo" aria-hidden="true"></span></a>
     <nav class="main-nav" aria-label="Primary navigation">
       <a href="/finds/" data-en="FINDS" data-ko="발견">FINDS</a>
       <a href="/archive/" data-en="ARCHIVE" data-ko="아카이브">ARCHIVE</a>
@@ -28,14 +28,14 @@
 
   <main>
     <section class="home-hero shell">
-      <div class="hero-copy">
-        <h1 class="hero-title" aria-label="Find what you weren’t looking for.">
-          <span data-en="Find what" data-ko="찾고 있지 않았던">Find what</span>
-          <span data-en="you weren’t" data-ko="것을">you weren’t</span>
-          <span data-en="looking for." data-ko="발견해.">looking for.</span>
-        </h1>
+      <div class="hero-copy hero-definition">
+        <div class="hero-definition-kicker">
+          <span>ARCHFNDR</span>
+          <span>ARCHIVE + FINDER</span>
+        </div>
+        <h1 class="hero-definition-title" data-en="A personal index for music worth finding, keeping, and returning to." data-ko="발견하고, 간직하고, 다시 돌아갈 가치가 있는 음악을 모으는 개인 아카이브.">A personal index for music worth finding, keeping, and returning to.</h1>
         <div class="hero-bottom">
-          <p data-en="A personal archive of songs worth keeping." data-ko="간직할 가치가 있는 음악을 모은 개인 아카이브.">A personal archive of songs worth keeping.</p>
+          <p data-en="Not an algorithm. A growing record of taste." data-ko="알고리즘이 아니라, 계속 쌓여가는 취향의 기록.">Not an algorithm. A growing record of taste.</p>
           <a class="under-link" href="/finds/" data-en="BROWSE FINDS ↗" data-ko="음악 둘러보기 ↗">BROWSE FINDS ↗</a>
         </div>
       </div>
@@ -56,7 +56,7 @@
     <div class="footer-row">
       <a class="footer-mark" href="/">ARCHFNDR</a>
       <a class="footer-social" href="https://instagram.com/wh3n_5005" target="_blank" rel="noopener" aria-label="Instagram @wh3n_5005">
-        <span class="footer-seal" aria-hidden="true"><svg viewBox="0 0 64 64"><circle class="seal-ring" cx="32" cy="32" r="29"/><path class="seal-a" d="M18 45 29.5 17h5L46 45h-7l-2.2-5.8H27.2L25 45h-7Zm11.3-11.4h5.4L32 26.3l-2.7 7.3Z"/><circle class="seal-dot" cx="49" cy="16" r="3.8"/></svg></span>
+        <span class="footer-seal" aria-hidden="true"></span>
         <span class="footer-ig"><small>INSTAGRAM</small><strong>@wh3n_5005</strong><b>↗</b></span>
       </a>
     </div>
@@ -66,6 +66,6 @@
   <aside class="track-drawer" id="trackDrawer" aria-hidden="true"><button class="drawer-backdrop" data-close-drawer aria-label="Close"></button><div class="drawer-panel"><button class="drawer-close" data-close-drawer aria-label="Close">×</button><div id="drawerContent"></div></div></aside>
   <script src="/media.js?v=20260901-1"></script>
   <script src="/songs.js?v=20260901-5"></script>
-  <script src="/script.js?v=20260901-5"></script>
+  <script src="/script.js?v=20260902-1"></script>
 </body>
 </html>
