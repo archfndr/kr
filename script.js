@@ -7,6 +7,9 @@ const MEDIA = window.ARCHFNDR_MEDIA || {};
 document.querySelectorAll('.footer-seal').forEach((seal) => {
   if (MEDIA.logo) seal.innerHTML = `<img src="${MEDIA.logo}" alt="" aria-hidden="true">`;
 });
+document.querySelectorAll('.brand-logo').forEach((logo) => {
+  if (MEDIA.logo) logo.innerHTML = `<img src="${MEDIA.logo}" alt="ArchFndr">`;
+});
 
 const TRACKS = window.ARCHFNDR_TRACKS || [];
 const body = document.body;
