@@ -1,6 +1,6 @@
 const footerStylesheet = document.createElement('link');
 footerStylesheet.rel = 'stylesheet';
-footerStylesheet.href = '/footer.css?v=20260901-2';
+footerStylesheet.href = '/footer.css?v=20260902-3';
 document.head.appendChild(footerStylesheet);
 
 const MEDIA = window.ARCHFNDR_MEDIA || {};
@@ -210,7 +210,6 @@ document.querySelectorAll('.main-nav a').forEach((link) => {
   if (link.getAttribute('href') === currentPath) link.classList.add('active');
 });
 
-document.getElementById('year')?.replaceChildren(String(new Date().getFullYear()));
 let savedLanguage = 'en';
 try { savedLanguage = localStorage.getItem('archfndr-language') || 'en'; } catch (_) {}
 setLanguage(savedLanguage);
