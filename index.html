@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css?v=20260902-1">
-  <link rel="stylesheet" href="/home.css?v=20260902-2">
+  <link rel="stylesheet" href="/home.css?v=20260904-1">
 </head>
 <body class="page-home" data-page="home">
   <header class="site-header">
@@ -28,18 +28,27 @@
   </header>
 
   <main>
-    <section class="home-hero shell home-identity">
+    <section class="home-hero shell home-identity" id="homeIdentity">
       <div class="identity-lockup">
-        <span class="identity-name">ARCHFNDR</span>
         <h1 class="identity-meaning" data-en="ARCHIVE FINDER" data-ko="ARCHIVE FINDER">ARCHIVE FINDER</h1>
       </div>
     </section>
 
-    <section class="featured-reveal-section shell reveal-on-scroll" aria-label="Featured track">
-      <div class="featured-reveal-label">
-        <span>[ 001 ]</span>
-        <span data-en="FIRST FIND" data-ko="첫 번째 발견">FIRST FIND</span>
+    <section class="featured-reveal-section shell reveal-on-scroll" aria-label="Today's recommendation">
+      <div class="today-recommend">
+        <div class="today-recommend-head">
+          <span>[ 001 ]</span>
+          <span data-en="TODAY'S RECOMMEND" data-ko="오늘의 추천">TODAY'S RECOMMEND</span>
+        </div>
+        <div class="today-recommend-copy">
+          <p class="today-hook">“Love lost”</p>
+          <h2>Lost</h2>
+          <p class="today-artist">Frank Ocean</p>
+          <p class="today-intro" data-en="Bright enough to move with, empty enough to stay with you." data-ko="몸을 움직이게 할 만큼 밝고, 오래 남을 만큼 공허한 곡.">Bright enough to move with, empty enough to stay with you.</p>
+          <button class="today-open" type="button" data-track="1"><span data-en="OPEN CURATION" data-ko="큐레이션 보기">OPEN CURATION</span><span>↗</span></button>
+        </div>
       </div>
+
       <button class="featured-card featured-card-reveal" data-track="1" aria-label="Open Lost by Frank Ocean">
         <div class="featured-cover" id="featuredCover"></div>
         <div class="featured-info">
@@ -68,6 +77,6 @@
   <script src="/media.js?v=20260901-1"></script>
   <script src="/songs.js?v=20260901-5"></script>
   <script src="/script.js?v=20260902-2"></script>
-  <script src="/home.js?v=20260902-2"></script>
+  <script src="/home.js?v=20260904-1"></script>
 </body>
 </html>
