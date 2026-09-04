@@ -37,23 +37,22 @@
     <section class="featured-reveal-section shell reveal-on-scroll" aria-label="Today's recommendation">
       <div class="today-recommend">
         <div class="today-recommend-head">
-          <span>[ 001 ]</span>
           <span data-en="TODAY'S RECOMMEND" data-ko="오늘의 추천">TODAY'S RECOMMEND</span>
         </div>
         <div class="today-recommend-copy">
-          <p class="today-hook">“Love lost”</p>
-          <h2>Lost</h2>
-          <p class="today-artist">Frank Ocean</p>
-          <p class="today-intro" data-en="Bright enough to move with, empty enough to stay with you." data-ko="몸을 움직이게 할 만큼 밝고, 오래 남을 만큼 공허한 곡.">Bright enough to move with, empty enough to stay with you.</p>
-          <button class="today-open" type="button" data-track="1"><span data-en="OPEN CURATION" data-ko="큐레이션 보기">OPEN CURATION</span><span>↗</span></button>
+          <p class="today-hook" id="todayHook"></p>
+          <h2 id="todayTitle"></h2>
+          <p class="today-artist" id="todayArtist"></p>
+          <p class="today-intro" id="todayIntro"></p>
+          <button class="today-open" id="todayOpen" type="button"><span data-en="OPEN CURATION" data-ko="큐레이션 보기">OPEN CURATION</span><span>↗</span></button>
         </div>
       </div>
 
-      <button class="featured-card featured-card-reveal" data-track="1" aria-label="Open Lost by Frank Ocean">
+      <button class="featured-card featured-card-reveal" id="todayCard" type="button">
         <div class="featured-cover" id="featuredCover"></div>
         <div class="featured-info">
-          <div><span class="micro">ARCHIVE 1</span><h2>Lost</h2><p>Frank Ocean</p></div>
-          <p class="featured-note">“Love lost”</p>
+          <div><h2 id="featuredTitle"></h2><p id="featuredArtist"></p></div>
+          <p class="featured-note" id="featuredNote"></p>
         </div>
       </button>
     </section>
@@ -76,7 +75,7 @@
   <aside class="track-drawer" id="trackDrawer" aria-hidden="true"><button class="drawer-backdrop" data-close-drawer aria-label="Close"></button><div class="drawer-panel"><button class="drawer-close" data-close-drawer aria-label="Close">×</button><div id="drawerContent"></div></div></aside>
   <script src="/media.js?v=20260901-1"></script>
   <script src="/songs.js?v=20260901-5"></script>
-  <script src="/script.js?v=20260904-2"></script>
+  <script src="/script.js?v=20260905-1"></script>
   <script src="/home.js?v=20260904-1"></script>
 </body>
 </html>
