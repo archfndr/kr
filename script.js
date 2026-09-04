@@ -3,6 +3,11 @@ footerStylesheet.rel = 'stylesheet';
 footerStylesheet.href = '/footer.css?v=20260902-3';
 document.head.appendChild(footerStylesheet);
 
+const detailStylesheet = document.createElement('link');
+detailStylesheet.rel = 'stylesheet';
+detailStylesheet.href = '/detail.css?v=20260904-1';
+document.head.appendChild(detailStylesheet);
+
 const MEDIA = window.ARCHFNDR_MEDIA || {};
 document.querySelectorAll('.footer-seal').forEach((seal) => {
   if (MEDIA.logo) seal.innerHTML = `<img src="${MEDIA.logo}" alt="" aria-hidden="true">`;
@@ -187,6 +192,8 @@ function openDrawer(id) {
   drawer.classList.add('open');
   drawer.setAttribute('aria-hidden', 'false');
   body.classList.add('drawer-open');
+  const panel = drawer.querySelector('.drawer-panel');
+  if (panel) panel.scrollTop = 0;
 }
 
 function closeDrawer() {
