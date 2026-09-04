@@ -1,3 +1,9 @@
+const hero = document.getElementById('homeIdentity');
+const media = window.ARCHFNDR_MEDIA || {};
+if (hero && media.baby) {
+  hero.style.setProperty('--hero-bg', `url("${media.baby}")`);
+}
+
 const revealItems = document.querySelectorAll('.reveal-on-scroll');
 
 if ('IntersectionObserver' in window) {
