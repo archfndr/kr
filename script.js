@@ -25,6 +25,7 @@ const mainNav = document.querySelector('.main-nav');
 const drawer = document.getElementById('trackDrawer');
 const drawerContent = document.getElementById('drawerContent');
 let currentLanguage = 'en';
+let todaysTrack = null;
 
 function coverStyle(track) {
   if (track.cover) return `background-image:url("${track.cover}")`;
@@ -33,6 +34,34 @@ function coverStyle(track) {
 
 function toneClass(track) {
   return track.cover ? '' : ` tone-${track.tone || 'grey'}`;
+}
+
+function getKoreaDateParts() {
+  const formatter = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Seoul',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit'
+  });
+  const parts = formatter.formatToParts(new Date());
+  const map = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return {
+    year: Number(map.year),
+    month: Number(map.month),
+    day: Number(map.day)
+  };
+}
+
+function getTodaysRecommend() {
+  const pool = TRACKS.filter((track) => track.recommend !== false);
+  if (!pool.length) return null;
+
+  const now = getKoreaDateParts();
+  const todayUtc = Date.UTC(now.year, now.month - 1, now.day);
+  const baseUtc = Date.UTC(2026, 8, 5); // 2026-09-05 KST starts with the first track.
+  const daysSinceBase = Math.floor((todayUtc - baseUtc) / 86400000);
+  const index = ((daysSinceBase % pool.length) + pool.length) % pool.length;
+  return pool[index];
 }
 
 function applyStaticLanguage() {
@@ -70,28 +99,59 @@ function visualCard(track) {
     <div class="visual-art${toneClass(track)}" style='${coverStyle(track)}'></div>
     <div class="visual-meta">
       <div><h3>${track.title}</h3><p>${track.artist}</p></div>
-      <span class="visual-index">${String(track.id).padStart(3,'0')}</span>
     </div>`;
   button.addEventListener('click', () => openDrawer(track.id));
   return button;
 }
 
 function renderHome() {
+  todaysTrack = getTodaysRecommend();
   const homeGrid = document.getElementById('homeGrid');
   const featuredCover = document.getElementById('featuredCover');
-  if (featuredCover && TRACKS[0]) {
-    featuredCover.style.backgroundImage = TRACKS[0].cover ? `url("${TRACKS[0].cover}")` : '';
-    featuredCover.style.backgroundSize = 'contain';
-    featuredCover.style.backgroundRepeat = 'no-repeat';
-    if (!TRACKS[0].cover) featuredCover.classList.add(`tone-${TRACKS[0].tone || 'grey'}`);
+  const todayHook = document.getElementById('todayHook');
+  const todayTitle = document.getElementById('todayTitle');
+  const todayArtist = document.getElementById('todayArtist');
+  const todayIntro = document.getElementById('todayIntro');
+  const todayOpen = document.getElementById('todayOpen');
+  const todayCard = document.getElementById('todayCard');
+  const featuredTitle = document.getElementById('featuredTitle');
+  const featuredArtist = document.getElementById('featuredArtist');
+  const featuredNote = document.getElementById('featuredNote');
+
+  if (todaysTrack) {
+    const comment = todaysTrack.comment?.[currentLanguage] || todaysTrack.comment?.en || '';
+    const description = todaysTrack.description?.[currentLanguage] || todaysTrack.description?.en || '';
+
+    if (todayHook) todayHook.textContent = comment ? `“${comment}”` : '';
+    if (todayTitle) todayTitle.textContent = todaysTrack.title;
+    if (todayArtist) todayArtist.textContent = todaysTrack.artist;
+    if (todayIntro) todayIntro.textContent = description;
+    if (featuredTitle) featuredTitle.textContent = todaysTrack.title;
+    if (featuredArtist) featuredArtist.textContent = todaysTrack.artist;
+    if (featuredNote) featuredNote.textContent = comment ? `“${comment}”` : '';
+
+    if (featuredCover) {
+      featuredCover.className = `featured-cover${toneClass(todaysTrack)}`;
+      featuredCover.style.backgroundImage = todaysTrack.cover ? `url("${todaysTrack.cover}")` : '';
+      featuredCover.style.backgroundSize = 'contain';
+      featuredCover.style.backgroundRepeat = 'no-repeat';
+      featuredCover.style.backgroundPosition = 'center';
+    }
+
+    const openToday = () => openDrawer(todaysTrack.id);
+    if (todayOpen) todayOpen.onclick = openToday;
+    if (todayCard) {
+      todayCard.onclick = openToday;
+      todayCard.setAttribute('aria-label', `Open ${todaysTrack.title} by ${todaysTrack.artist}`);
+    }
   }
+
   if (homeGrid) {
     homeGrid.innerHTML = '';
-    TRACKS.slice(1,4).forEach((track) => homeGrid.appendChild(visualCard(track)));
+    TRACKS.filter((track) => !todaysTrack || track.id !== todaysTrack.id)
+      .slice(0, 3)
+      .forEach((track) => homeGrid.appendChild(visualCard(track)));
   }
-  document.querySelectorAll('[data-track="1"]').forEach((el) => {
-    el.onclick = () => openDrawer(1);
-  });
 }
 
 function getPageParam() {
@@ -178,7 +238,7 @@ function renderDrawer(track) {
       <section class="story-row">
         <div class="story-media${toneClass(track)}" style='${coverStyle(track)}'></div>
         <div class="story-copy">
-          <div class="drawer-kicker">ARCHIVE ${track.id}</div>
+          <div class="drawer-kicker">CURATION</div>
           <h2 class="drawer-title">${track.title}</h2>
           <p class="drawer-artist">${track.artist}</p>
           <div class="drawer-tags">${track.genres.map((genre) => `<span class="tag">${genre}</span>`).join('')}</div>
