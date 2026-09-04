@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>ArchFndr Preview</title>
+  <style>
+    :root{--bg:#0a0a0a;--fg:#f1efe8;--muted:#8d8982;--line:#262626;--accent:#dfff4f}
+    *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,Arial,sans-serif}button{font:inherit}
+    .app{min-height:100svh;display:flex;flex-direction:column}
+    .bar{position:sticky;top:0;z-index:20;background:rgba(10,10,10,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:10px}
+    .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.row+ .row{margin-top:8px}
+    .brand{font-size:12px;font-weight:700;letter-spacing:.08em;margin-right:auto}.brand span{color:var(--accent)}
+    button{border:1px solid #363636;background:#121212;color:#d8d6cf;border-radius:999px;padding:8px 11px;font-size:11px;cursor:pointer}
+    button.active{background:#eeeae1;color:#111;border-color:#eeeae1}
+    .stage{flex:1;padding:12px;overflow:auto;-webkit-overflow-scrolling:touch}
+    .viewport-wrap{position:relative;margin:0 auto;transform-origin:top left}
+    .viewport{background:#111;box-shadow:0 0 0 1px #2a2a2a,0 18px 70px rgba(0,0,0,.35);overflow:hidden}
+    iframe{display:block;border:0;background:#090909}
+    .status{font-size:10px;color:var(--muted);margin-left:auto;white-space:nowrap}
+    .hint{padding:8px 12px 12px;color:#666;font-size:10px;text-align:center}
+    @media(max-width:640px){.bar{padding:8px}.row{gap:6px}button{padding:7px 9px;font-size:10px}.status{width:100%;margin:2px 0 0}.stage{padding:8px}}
+  </style>
+</head>
+<body>
+<div class="app">
+  <header class="bar">
+    <div class="row">
+      <div class="brand">ARCHFNDR <span>PREVIEW</span></div>
+      <button data-path="/" class="path active">HOME</button>
+      <button data-path="/finds/" class="path">FINDS</button>
+      <button data-path="/archive/" class="path">ARCHIVE</button>
+    </div>
+    <div class="row">
+      <button data-size="1440x900" class="size active">1440×900</button>
+      <button data-size="1280x800" class="size">1280×800</button>
+      <button data-size="1024x768" class="size">1024×768</button>
+      <button id="fit" class="active">FIT</button>
+      <button id="actual">100%</button>
+      <button id="reload">RELOAD</button>
+      <button id="copy">COPY URL</button>
+      <span class="status" id="status">1440×900 · FIT</span>
+    </div>
+  </header>
+
+  <main class="stage" id="stage">
+    <div class="viewport-wrap" id="wrap">
+      <div class="viewport" id="viewport">
+        <iframe id="frame" title="ArchFndr desktop preview" src="https://archfndr.kr/"></iframe>
+      </div>
+    </div>
+  </main>
+  <div class="hint">개발용 프리뷰 페이지 · 실제 사이트에는 노출되지 않음</div>
+</div>
+<script>
+  const frame=document.getElementById('frame');
+  const stage=document.getElementById('stage');
+  const wrap=document.getElementById('wrap');
+  const viewport=document.getElementById('viewport');
+  const status=document.getElementById('status');
+  let vw=1440,vh=900,mode='fit',path='/';
+
+  function sizeFrame(){
+    viewport.style.width=vw+'px';viewport.style.height=vh+'px';
+    frame.style.width=vw+'px';frame.style.height=vh+'px';
+    if(mode==='fit'){
+      const available=Math.max(240,stage.clientWidth-2);
+      const scale=Math.min(1,available/vw);
+      wrap.style.width=(vw*scale)+'px';wrap.style.height=(vh*scale)+'px';
+      viewport.style.transform='scale('+scale+')';viewport.style.transformOrigin='top left';
+      status.textContent=vw+'×'+vh+' · FIT '+Math.round(scale*100)+'%';
+    }else{
+      wrap.style.width=vw+'px';wrap.style.height=vh+'px';
+      viewport.style.transform='none';
+      status.textContent=vw+'×'+vh+' · 100%';
+    }
+  }
+  function load(){frame.src='https://archfndr.kr'+path+(path.includes('?')?'&':'?')+'_preview='+Date.now()}
+  document.querySelectorAll('.size').forEach(b=>b.onclick=()=>{document.querySelectorAll('.size').forEach(x=>x.classList.remove('active'));b.classList.add('active');[vw,vh]=b.dataset.size.split('x').map(Number);sizeFrame()});
+  document.querySelectorAll('.path').forEach(b=>b.onclick=()=>{document.querySelectorAll('.path').forEach(x=>x.classList.remove('active'));b.classList.add('active');path=b.dataset.path;load()});
+  document.getElementById('fit').onclick=()=>{mode='fit';document.getElementById('fit').classList.add('active');document.getElementById('actual').classList.remove('active');sizeFrame()};
+  document.getElementById('actual').onclick=()=>{mode='actual';document.getElementById('actual').classList.add('active');document.getElementById('fit').classList.remove('active');sizeFrame()};
+  document.getElementById('reload').onclick=load;
+  document.getElementById('copy').onclick=async()=>{const url='https://archfndr.kr'+path;try{await navigator.clipboard.writeText(url);status.textContent='COPIED · '+url}catch(e){prompt('복사',url)}};
+  window.addEventListener('resize',sizeFrame);
+  sizeFrame();
+</script>
+</body>
+</html>
