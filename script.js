@@ -5,7 +5,7 @@ document.head.appendChild(footerStylesheet);
 
 const detailStylesheet = document.createElement('link');
 detailStylesheet.rel = 'stylesheet';
-detailStylesheet.href = '/detail.css?v=20260904-1';
+detailStylesheet.href = '/detail.css?v=20260904-2';
 document.head.appendChild(detailStylesheet);
 
 const MEDIA = window.ARCHFNDR_MEDIA || {};
@@ -81,6 +81,8 @@ function renderHome() {
   const featuredCover = document.getElementById('featuredCover');
   if (featuredCover && TRACKS[0]) {
     featuredCover.style.backgroundImage = TRACKS[0].cover ? `url("${TRACKS[0].cover}")` : '';
+    featuredCover.style.backgroundSize = 'contain';
+    featuredCover.style.backgroundRepeat = 'no-repeat';
     if (!TRACKS[0].cover) featuredCover.classList.add(`tone-${TRACKS[0].tone || 'grey'}`);
   }
   if (homeGrid) {
@@ -169,18 +171,33 @@ function renderDrawer(track) {
   if (!drawerContent) return;
   const comment = track.comment[currentLanguage] || track.comment.en;
   const description = track.description[currentLanguage] || track.description.en;
+  const visual = track.storyImages?.[0] || track.cover || '';
+  const visualStyle = visual ? `background-image:url("${visual}")` : '';
   drawerContent.innerHTML = `
-    <div class="drawer-cover${toneClass(track)}" style='${coverStyle(track)}'></div>
-    <div class="drawer-kicker">ARCHIVE ${track.id}</div>
-    <h2 class="drawer-title">${track.title}</h2>
-    <p class="drawer-artist">${track.artist}</p>
-    <div class="drawer-tags">${track.genres.map((genre) => `<span class="tag">${genre}</span>`).join('')}</div>
-    <p class="drawer-quote">“${comment}”</p>
-    <p class="drawer-description">${description}</p>
-    <div class="drawer-links">
-      <a href="${track.spotify}" target="_blank" rel="noopener"><span>SPOTIFY</span><span>↗</span></a>
-      <a href="${track.apple}" target="_blank" rel="noopener"><span>APPLE MUSIC</span><span>↗</span></a>
-      <a href="${track.youtube}" target="_blank" rel="noopener"><span>YOUTUBE</span><span>↗</span></a>
+    <div class="drawer-story">
+      <section class="story-row">
+        <div class="story-media${toneClass(track)}" style='${coverStyle(track)}'></div>
+        <div class="story-copy">
+          <div class="drawer-kicker">ARCHIVE ${track.id}</div>
+          <h2 class="drawer-title">${track.title}</h2>
+          <p class="drawer-artist">${track.artist}</p>
+          <div class="drawer-tags">${track.genres.map((genre) => `<span class="tag">${genre}</span>`).join('')}</div>
+        </div>
+      </section>
+
+      <section class="story-row reverse">
+        <div class="story-media${toneClass(track)}" style='${visualStyle}'></div>
+        <div class="story-copy">
+          <p class="drawer-quote">“${comment}”</p>
+          <p class="drawer-description">${description}</p>
+        </div>
+      </section>
+
+      <div class="drawer-links">
+        <a href="${track.spotify}" target="_blank" rel="noopener"><span>SPOTIFY</span><span>↗</span></a>
+        <a href="${track.apple}" target="_blank" rel="noopener"><span>APPLE MUSIC</span><span>↗</span></a>
+        <a href="${track.youtube}" target="_blank" rel="noopener"><span>YOUTUBE</span><span>↗</span></a>
+      </div>
     </div>`;
 }
 
