@@ -87,20 +87,20 @@ window.ARCHFNDR_TRACKS = [
   },
   {
     id: 6,
-    slug: 'like-you-do',
-    title: 'Like You Do',
+    slug: 'pixelated-kisses',
+    title: 'PIXELATED KISSES',
     artist: 'Joji',
-    album: 'Nectar',
-    genres: ['R&B', 'POP'],
-    cover: 'https://coverartarchive.org/release/92abd49f-0a1a-46dc-a1f8-65593b9e7123/front',
-    comment: { en: 'Quiet devastation.', ko: '조용한 붕괴.' },
+    album: 'Piss In The Wind',
+    genres: ['ALT R&B', 'ELECTRONIC'],
+    cover: '/assets/covers/joji-pixelated-kisses.jpg',
+    comment: { en: 'A signal through the noise.', ko: '노이즈 사이로 남는 신호.' },
     description: {
-      en: 'Melancholy without the melodrama. Close, quiet, replayable.',
-      ko: '과장 없는 우울. 가까이 있고, 조용하고, 계속 다시 듣게 되는 곡.'
+      en: 'Distorted, compressed, and immediate — Joji turns distance and digital interference into something physical.',
+      ko: '왜곡되고 압축된 소리 속에서 거리감과 디지털 노이즈를 물리적인 감각처럼 밀어붙이는 곡.'
     },
-    spotify: 'https://open.spotify.com/search/Joji%20Like%20You%20Do',
-    apple: 'https://music.apple.com/us/search?term=Joji%20Like%20You%20Do',
-    youtube: 'https://www.youtube.com/results?search_query=Joji+Like+You+Do'
+    spotify: 'https://open.spotify.com/track/2OZVskV28xxJjjhQqKTLSg',
+    apple: 'https://music.apple.com/us/song/1876695015',
+    youtube: 'https://www.youtube.com/watch?v=AeO81mfRook'
   },
   {
     id: 7,
