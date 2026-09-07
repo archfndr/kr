@@ -139,20 +139,19 @@ window.ARCHFNDR_TRACKS = [
   {
     id: 9,
     slug: 'metalmind',
-    title: 'Metalmind',
-    artist: 'Dijon',
-    album: 'Absolutely',
+    title: 'metalmind',
+    artist: 'Kinji',
+    album: 'metalmind',
     genres: ['R&B', 'EXPERIMENTAL'],
-    cover: '',
-    tone: 'violet',
+    cover: 'https://cdn2.albumoftheyear.org/1000x0/album/1535633-metalmind_040221.jpg',
     comment: { en: 'Beautifully unstable.', ko: '아름답게 불안정한 곡.' },
     description: {
       en: 'Feels like it could collapse at any second, which is exactly why it stays alive.',
       ko: '언제든 무너질 것 같아서 오히려 끝까지 살아 있는 듯한 곡.'
     },
-    spotify: 'https://open.spotify.com/search/Dijon%20Metalmind',
-    apple: 'https://music.apple.com/us/search?term=Dijon%20Metalmind',
-    youtube: 'https://www.youtube.com/results?search_query=Dijon+Metalmind'
+    spotify: 'https://open.spotify.com/track/0gX9HpiwkojYBPThFaWQz6',
+    apple: 'https://music.apple.com/us/song/1833639579',
+    youtube: 'https://www.youtube.com/results?search_query=Kinji+metalmind'
   },
   {
     id: 10,
