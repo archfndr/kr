@@ -13,12 +13,19 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css?v=20260902-1">
   <link rel="stylesheet" href="/home.css?v=20260904-1">
+  <link rel="stylesheet" href="/nav.css?v=20260907-1">
 </head>
 <body class="page-home" data-page="home">
   <header class="site-header">
     <a class="brand" href="/" aria-label="ArchFndr home"><span class="brand-logo" aria-hidden="true"></span></a>
     <nav class="main-nav" aria-label="Primary navigation">
-      <a href="/finds/" data-en="FINDS" data-ko="발견">FINDS</a>
+      <div class="nav-branch">
+        <button class="nav-branch-toggle" type="button" aria-expanded="false" aria-controls="findsSubmenu"><span data-en="FINDS" data-ko="발견">FINDS</span><span class="nav-branch-chevron" aria-hidden="true">›</span></button>
+        <div class="nav-submenu" id="findsSubmenu">
+          <a href="/finds/song/" data-en="SONG" data-ko="노래">SONG</a>
+          <a href="/finds/artist/" data-en="ARTIST" data-ko="아티스트">ARTIST</a>
+        </div>
+      </div>
       <a href="/archive/" data-en="ARCHIVE" data-ko="아카이브">ARCHIVE</a>
     </nav>
     <div class="header-actions">
@@ -58,7 +65,7 @@
     </section>
 
     <section class="home-preview shell reveal-on-scroll">
-      <div class="section-kicker"><span data-en="LATEST FINDS" data-ko="최근 발견">LATEST FINDS</span><a href="/finds/" data-en="VIEW ALL ↗" data-ko="전체 보기 ↗">VIEW ALL ↗</a></div>
+      <div class="section-kicker"><span data-en="LATEST FINDS" data-ko="최근 발견">LATEST FINDS</span><a href="/finds/song/" data-en="VIEW ALL ↗" data-ko="전체 보기 ↗">VIEW ALL ↗</a></div>
       <div class="visual-grid preview-grid" id="homeGrid"></div>
     </section>
   </main>
@@ -77,6 +84,7 @@
   <script src="/baby-cover.js?v=20260907-1"></script>
   <script src="/songs.js?v=20260907-1"></script>
   <script src="/script.js?v=20260905-1"></script>
+  <script src="/nav.js?v=20260907-1"></script>
   <script src="/home.js?v=20260904-1"></script>
   <!-- Cloudflare Web Analytics -->
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"7898f6d9c7704bf9975dfe0ee84500cc"}'></script>
