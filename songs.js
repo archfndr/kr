@@ -6,7 +6,7 @@ window.ARCHFNDR_TRACKS = [
     artist: 'Frank Ocean',
     album: 'channel ORANGE',
     genres: ['R&B', 'ALT R&B'],
-    cover: 'https://coverartarchive.org/release/a942130d-bf15-4a5b-9903-a2bd69792e0a/front-500',
+    cover: 'https://coverartarchive.org/release/a942130d-bf15-4a5b-9903-a2bd69792e0a/front',
     comment: { en: 'Love lost', ko: '잃어버린 사랑' },
     description: {
       en: 'Bright on the surface, restless underneath. The kind of song that keeps moving even when the feeling inside it does not.',
@@ -23,7 +23,7 @@ window.ARCHFNDR_TRACKS = [
     artist: 'Mk.gee',
     album: 'Two Star & The Dream Police',
     genres: ['ALT', 'NEO-PSYCH'],
-    cover: 'https://coverartarchive.org/release/ec873d45-a37c-4738-b817-36d8cc3591e9/front-500',
+    cover: 'https://coverartarchive.org/release/ec873d45-a37c-4738-b817-36d8cc3591e9/front',
     comment: { en: 'Blurred edges, sharp feeling.', ko: '흐릿한 질감 속에 또렷하게 남는 감정.' },
     description: {
       en: 'A warped, close-up kind of song — damaged textures held together by something strangely tender.',
@@ -58,7 +58,7 @@ window.ARCHFNDR_TRACKS = [
     artist: 'Frank Ocean',
     album: 'Blonde',
     genres: ['R&B', 'ART POP'],
-    cover: 'https://coverartarchive.org/release/8294645a-f996-44b6-9060-7f189b9f59f3/front-500',
+    cover: 'https://coverartarchive.org/release/8294645a-f996-44b6-9060-7f189b9f59f3/front',
     comment: { en: 'Memory stretched thin.', ko: '기억이 얇게 늘어나는 순간.' },
     description: {
       en: 'A memory slowly losing its edges until it becomes atmosphere.',
@@ -75,7 +75,7 @@ window.ARCHFNDR_TRACKS = [
     artist: 'Nujabes',
     album: 'Modal Soul',
     genres: ['HIP-HOP', 'JAZZ RAP'],
-    cover: 'https://coverartarchive.org/release/9f3a4a9b-5741-4a3b-9350-10940ce8bbf3/front-500',
+    cover: 'https://coverartarchive.org/release/9f3a4a9b-5741-4a3b-9350-10940ce8bbf3/front',
     comment: { en: 'A feeling that never ages.', ko: '시간이 지나도 늙지 않는 감정.' },
     description: {
       en: 'Dusty drums and daylight through curtains. Familiar without ever becoming dull.',
@@ -92,7 +92,7 @@ window.ARCHFNDR_TRACKS = [
     artist: 'Joji',
     album: 'Nectar',
     genres: ['R&B', 'POP'],
-    cover: 'https://coverartarchive.org/release/92abd49f-0a1a-46dc-a1f8-65593b9e7123/front-500',
+    cover: 'https://coverartarchive.org/release/92abd49f-0a1a-46dc-a1f8-65593b9e7123/front',
     comment: { en: 'Quiet devastation.', ko: '조용한 붕괴.' },
     description: {
       en: 'Melancholy without the melodrama. Close, quiet, replayable.',
@@ -109,7 +109,7 @@ window.ARCHFNDR_TRACKS = [
     artist: 'Quadeca',
     album: 'Vanisher, Horizon Scraper',
     genres: ['ART POP', 'FOLKTRONICA'],
-    cover: 'https://coverartarchive.org/release/1c25b84b-e51e-47cc-8c88-e01ff28f8740/front-500',
+    cover: 'https://coverartarchive.org/release/1c25b84b-e51e-47cc-8c88-e01ff28f8740/front',
     comment: { en: 'Leave the seams exposed.', ko: '봉제선을 숨기지 않는 음악.' },
     description: {
       en: 'For when polished music feels too clean and you want the construction left visible.',
@@ -126,7 +126,7 @@ window.ARCHFNDR_TRACKS = [
     artist: 'Frank Ocean',
     album: 'channel ORANGE',
     genres: ['R&B', 'ELECTRONIC'],
-    cover: 'https://coverartarchive.org/release/a942130d-bf15-4a5b-9903-a2bd69792e0a/front-500',
+    cover: 'https://coverartarchive.org/release/a942130d-bf15-4a5b-9903-a2bd69792e0a/front',
     comment: { en: 'A whole night in one song.', ko: '한 곡 안에 들어 있는 밤 전체.' },
     description: {
       en: 'Two halves, two temperatures, one long fall into the same story.',
@@ -161,7 +161,7 @@ window.ARCHFNDR_TRACKS = [
     artist: 'Frank Ocean',
     album: 'Blonde',
     genres: ['R&B', 'INDIE'],
-    cover: 'https://coverartarchive.org/release/8294645a-f996-44b6-9060-7f189b9f59f3/front-500',
+    cover: 'https://coverartarchive.org/release/8294645a-f996-44b6-9060-7f189b9f59f3/front',
     comment: { en: 'Youth after it is already gone.', ko: '이미 지나가 버린 뒤의 젊음.' },
     description: {
       en: 'A song that sounds like remembering something while it is disappearing.',
@@ -170,41 +170,5 @@ window.ARCHFNDR_TRACKS = [
     spotify: 'https://open.spotify.com/search/Frank%20Ocean%20Ivy',
     apple: 'https://music.apple.com/us/search?term=Frank%20Ocean%20Ivy',
     youtube: 'https://www.youtube.com/results?search_query=Frank+Ocean+Ivy'
-  },
-  {
-    id: 11,
-    slug: 'wallflower',
-    title: 'Wallflower',
-    artist: 'Alex Sampson',
-    album: '—',
-    genres: ['POP', 'INDIE POP'],
-    cover: '',
-    tone: 'blue',
-    comment: { en: 'Soft focus.', ko: '초점이 살짝 흐려진 듯한 감정.' },
-    description: {
-      en: 'Clean enough to feel immediate, soft enough to stay around.',
-      ko: '바로 와닿을 만큼 선명하지만 오래 남을 만큼 부드러운 곡.'
-    },
-    spotify: 'https://open.spotify.com/search/Alex%20Sampson%20Wallflower',
-    apple: 'https://music.apple.com/us/search?term=Alex%20Sampson%20Wallflower',
-    youtube: 'https://www.youtube.com/results?search_query=Alex+Sampson+Wallflower'
-  },
-  {
-    id: 12,
-    slug: 'sunday-girl',
-    title: 'Sunday Girl',
-    artist: 'Devvon Terrell',
-    album: '—',
-    genres: ['R&B', 'POP'],
-    cover: '',
-    tone: 'green',
-    comment: { en: 'Easy light.', ko: '편안한 빛 같은 곡.' },
-    description: {
-      en: 'Warm, direct, and easy to keep close without asking for too much.',
-      ko: '따뜻하고 직접적이며 부담 없이 곁에 두기 좋은 곡.'
-    },
-    spotify: 'https://open.spotify.com/search/Devvon%20Terrell%20Sunday%20Girl',
-    apple: 'https://music.apple.com/us/search?term=Devvon%20Terrell%20Sunday%20Girl',
-    youtube: 'https://www.youtube.com/results?search_query=Devvon+Terrell+Sunday+Girl'
   }
 ];
