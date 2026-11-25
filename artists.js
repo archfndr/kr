@@ -60,16 +60,16 @@
     node.className = 'artist-node';
 
     const albumCount = artist.albums.length;
-    const songCount = artist.tracks.length;
+    const songCount = artist.tracks.filter((track) => track.kind !== 'album').length;
     const countText = lang === 'ko'
       ? `앨범 ${albumCount} · 곡 ${songCount}`
       : `${albumCount} ALBUM${albumCount === 1 ? '' : 'S'} · ${songCount} SONG${songCount === 1 ? '' : 'S'}`;
 
     const albumsMarkup = artist.albums.length
-      ? artist.albums.map((album) => `<div class="artist-album">${album}</div>`).join('')
+      ? artist.albums.map((album) => { const feature = artist.tracks.find((track) => track.kind === 'album' && track.album === album); return feature ? `<button class="artist-song" type="button" data-track-id="${feature.id}"><span>${album}</span><small>${lang === 'ko' ? '앨범 큐레이션' : 'ALBUM CURATION'}</small></button>` : `<div class="artist-album">${album}</div>`; }).join('')
       : `<div class="artist-empty">${lang === 'ko' ? '앨범 정보 없음' : 'NO ALBUM DATA YET'}</div>`;
 
-    const songsMarkup = artist.tracks.map((track) => `
+    const songsMarkup = artist.tracks.filter((track) => track.kind !== 'album').map((track) => `
       <button class="artist-song" type="button" data-track-id="${track.id}">
         <span>${track.title}</span><small>${track.album && track.album !== '—' ? track.album : ''}</small>
       </button>`).join('');

@@ -169,5 +169,52 @@ window.ARCHFNDR_TRACKS = [
     spotify: 'https://open.spotify.com/search/Frank%20Ocean%20Ivy',
     apple: 'https://music.apple.com/us/search?term=Frank%20Ocean%20Ivy',
     youtube: 'https://www.youtube.com/results?search_query=Frank+Ocean+Ivy'
+  },
+  {
+    "id": 11,
+    "slug": "pirouette",
+    "kind": "album",
+    "title": "Pirouette",
+    "artist": "2hollis",
+    "album": "Pirouette",
+    "genres": [
+      "ELECTRONIC",
+      "ART POP",
+      "ALBUM"
+    ],
+    "cover": "https://www.universalmusic.ca/wp-content/uploads/sites/1843/2026/11/Screenshot-2026-11-11-at-11.45.10-AM.png",
+    "comment": {
+      "en": "The beauty of duality.",
+      "ko": "상반된 것들이 이루는 아름다움."
+    },
+    "description": {
+      "en": "A fantasy world learns to feel human. On Pirouette, tenderness and distortion move around the same axis.",
+      "ko": "판타지의 세계가 인간의 감정을 마주한다. Pirouette에서 섬세함과 왜곡은 같은 축을 중심으로 회전한다."
+    },
+    "story": {
+      "en": [
+        "2hollis does not simply cross genres; he builds a world where opposites can coexist. Flowing hair and gothic silhouettes, gentle melodies and violent bass, masculine and feminine-coded imagery all inhabit the same character. His sound makes that tension tangible.",
+        "From White Tiger (2022) and 2 (2023) to boy (2024), he cultivated an online underground audience. Touring with Ken Carson brought his electronic sound to rap crowds. His major-label debut star (2025) reached No. 11 on Billboard’s Top Dance Albums chart; sold-out tours and appearances at Coachella and Lollapalooza followed. His rise connects online fandom, club energy and a coherent visual identity.",
+        "Released November 11, 2026, Pirouette is a 16-track album about love in its conflicting forms. Named after a ballet turn, the record can be heard as a rotation between intimacy and unrest. Rave-rap, trance, pop and live instrumentation flow into one another; Mk.gee is among its collaborators. Yoshitaka Amano’s hand-drawn cover brings its gothic romance into focus: a dark armored figure holds a woman in red, suspended in a world of restless forms. The fantasy is not an escape from emotion, but a language for it."
+      ],
+      "ko": [
+        "2hollis는 단순히 장르를 넘나드는 데 그치지 않는다. 그는 서로 상반된 것들이 공존할 수 있는 세계를 구축한다. 흩날리는 머리카락과 고딕 실루엣, 섬세한 멜로디와 공격적인 베이스, 남성적·여성적으로 읽히는 이미지가 한 인물 안에 자리한다. 그의 음악은 그 긴장감을 소리로 구현한다.",
+        "White Tiger(2022), 2(2023), boy(2024)를 거치며 인터넷 언더그라운드에서 팬층을 형성한 그는 Ken Carson의 투어에 참여하며 랩 팬들에게도 자신의 전자음악을 알렸다. 2025년 메이저 데뷔작 star는 빌보드 Top Dance Albums 11위에 올랐고, 매진 투어와 코첼라·롤라팔루자 출연으로 이어졌다. 온라인 팬덤과 레이브의 현장 에너지, 일관된 시각적 정체성이 그의 부상을 설명한다.",
+        "2026년 11월 11일 발표된 16곡의 Pirouette는 사랑의 상반된 감정을 탐구한다. 발레에서 한 발을 축으로 회전하는 피루엣처럼, 친밀함과 불안 사이를 끊임없이 오가는 작품으로 읽을 수 있다. 레이브 랩과 트랜스, 팝, 실제 악기 연주가 서로 이어지고 Mk.gee도 제작에 참여했다. 아마노 요시타카가 그린 커버에는 검은 갑옷의 인물과 붉은 옷의 여인이 부유한다. 이 고딕 판타지는 감정으로부터의 도피가 아니라, 감정을 표현하는 하나의 언어다."
+      ]
+    },
+    "sources": [
+      {
+        "label": "UNIVERSAL MUSIC — RELEASE NOTES",
+        "url": "https://www.universalmusic.ca/2026/11/11/2hollis-releases-highly-anticipated-album-pirouette/"
+      },
+      {
+        "label": "PITCHFORK — ALBUM REVIEW",
+        "url": "https://pitchfork.com/reviews/albums/2hollis-pirouette/"
+      }
+    ],
+    "spotify": "https://open.spotify.com/search/2hollis%20Pirouette",
+    "apple": "https://music.apple.com/us/album/pirouette/6812861964",
+    "youtube": "https://www.youtube.com/results?search_query=2hollis+Pirouette"
   }
 ];

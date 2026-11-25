@@ -98,7 +98,7 @@ function visualCard(track) {
   button.innerHTML = `
     <div class="visual-art${toneClass(track)}" style='${coverStyle(track)}'></div>
     <div class="visual-meta">
-      <div><h3>${track.title}</h3><p>${track.artist}</p></div>
+      <div><h3>${track.title}</h3><p>${track.artist}${track.kind === 'album' ? (currentLanguage === 'ko' ? ' · 앨범' : ' · ALBUM') : ''}</p></div>
     </div>`;
   button.addEventListener('click', () => openDrawer(track.id));
   return button;
@@ -148,7 +148,7 @@ function renderHome() {
 
   if (homeGrid) {
     homeGrid.innerHTML = '';
-    TRACKS.filter((track) => !todaysTrack || track.id !== todaysTrack.id)
+    [...TRACKS].sort((a, b) => (b.kind === 'album') - (a.kind === 'album')).filter((track) => !todaysTrack || track.id !== todaysTrack.id)
       .slice(0, 3)
       .forEach((track) => homeGrid.appendChild(visualCard(track)));
   }
@@ -199,7 +199,7 @@ function renderFinds() {
   const current = Math.min(getPageParam(), totalPages);
   const start = (current - 1) * pageSize;
   grid.innerHTML = '';
-  TRACKS.slice(start, start + pageSize).forEach((track) => grid.appendChild(visualCard(track)));
+  [...TRACKS].sort((a, b) => (b.kind === 'album') - (a.kind === 'album')).slice(start, start + pageSize).forEach((track) => grid.appendChild(visualCard(track)));
   renderPagination(pagination, current, totalPages, changePage);
 }
 
@@ -238,7 +238,7 @@ function renderDrawer(track) {
       <section class="story-row">
         <div class="story-media${toneClass(track)}" style='${coverStyle(track)}'></div>
         <div class="story-copy">
-          <div class="drawer-kicker">CURATION</div>
+          <div class="drawer-kicker">${track.kind === 'album' ? (currentLanguage === 'ko' ? '앨범 큐레이션' : 'ALBUM CURATION') : 'CURATION'}</div>
           <h2 class="drawer-title">${track.title}</h2>
           <p class="drawer-artist">${track.artist}</p>
           <div class="drawer-tags">${track.genres.map((genre) => `<span class="tag">${genre}</span>`).join('')}</div>
@@ -250,10 +250,13 @@ function renderDrawer(track) {
         <div class="story-copy">
           <p class="drawer-quote">“${comment}”</p>
           <p class="drawer-description">${description}</p>
+          ${track.story?.[currentLanguage]?.map((paragraph) => `<p class="drawer-description" style="margin-top:1em">${paragraph}</p>`).join('') || ''}
+          ${track.kind === 'album' ? '<p class="drawer-description" style="margin-top:1em;font-size:13px">Artwork: Yoshitaka Amano</p>' : ''}
         </div>
       </section>
 
       <div class="drawer-links">
+        ${track.sources?.map((source) => `<a href="${source.url}" target="_blank" rel="noopener"><span>${source.label}</span><span>↗</span></a>`).join('') || ''}
         <a href="${track.spotify}" target="_blank" rel="noopener"><span>SPOTIFY</span><span>↗</span></a>
         <a href="${track.apple}" target="_blank" rel="noopener"><span>APPLE MUSIC</span><span>↗</span></a>
         <a href="${track.youtube}" target="_blank" rel="noopener"><span>YOUTUBE</span><span>↗</span></a>
