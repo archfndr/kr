@@ -5,7 +5,7 @@ document.head.appendChild(footerStylesheet);
 
 const detailStylesheet = document.createElement('link');
 detailStylesheet.rel = 'stylesheet';
-detailStylesheet.href = '/detail.css?v=20260904-2';
+detailStylesheet.href = '/detail.css?v=20261125-3';
 document.head.appendChild(detailStylesheet);
 
 const MEDIA = window.ARCHFNDR_MEDIA || {};
@@ -167,11 +167,12 @@ function renderFinds() {
   const pagination = document.getElementById('findPagination');
   if (!grid) return;
   const pageSize = 9;
-  const totalPages = Math.max(1, Math.ceil(TRACKS.length / pageSize));
+  const pool = TRACKS.filter(track => body.dataset.kind === 'album' ? track.kind === 'album' : track.kind !== 'album');
+  const totalPages = Math.max(1, Math.ceil(pool.length / pageSize));
   const current = Math.min(getPageParam(), totalPages);
   const start = (current - 1) * pageSize;
   grid.innerHTML = '';
-  [...TRACKS].sort((a, b) => (b.kind === 'album') - (a.kind === 'album')).slice(start, start + pageSize).forEach((track) => grid.appendChild(visualCard(track)));
+  pool.slice(start, start + pageSize).forEach((track) => grid.appendChild(visualCard(track)));
   renderPagination(pagination, current, totalPages, changePage);
 }
 
@@ -217,22 +218,23 @@ function renderDrawer(track) {
         </div>
       </section>
 
-      <section class="story-row reverse">
-        <div class="story-media${toneClass(track)}" style='${visualStyle}'></div>
+      <section class="story-row reverse${track.kind === 'album' ? ' album-hook' : ''}">
+        ${track.kind === 'album' ? '' : `<div class="story-media${toneClass(track)}" style=\'${visualStyle}\'></div>`}
         <div class="story-copy">
           <p class="drawer-quote">“${comment}”</p>
           <p class="drawer-description">${description}</p>
-          ${track.story?.map((paragraph) => `<p class="drawer-description" style="margin-top:1em">${paragraph}</p>`).join('') || ''}
-          ${track.kind === 'album' ? '<p class="drawer-description" style="margin-top:1em;font-size:13px">Artwork: Yoshitaka Amano</p>' : ''}
+          
+          ${track.artworkCredit ? `<p class="drawer-description" style="margin-top:1em;font-size:13px">${track.artworkCredit}</p>` : ''}
         </div>
       </section>
 
       <div class="drawer-links">
-        ${track.sources?.map((source) => `<a href="${source.url}" target="_blank" rel="noopener"><span>${source.label}</span><span>↗</span></a>`).join('') || ''}
+        
         <a href="${track.spotify}" target="_blank" rel="noopener"><span>SPOTIFY</span><span>↗</span></a>
         <a href="${track.apple}" target="_blank" rel="noopener"><span>APPLE MUSIC</span><span>↗</span></a>
         <a href="${track.youtube}" target="_blank" rel="noopener"><span>YOUTUBE</span><span>↗</span></a>
       </div>
+      ${track.context?.length ? `<section class="drawer-context" aria-label="Related context"><p class="drawer-kicker">RELATED CONTEXT</p>${track.context.map(item => `<a href="${item.url}"><small>${item.type}</small><strong>${item.title}</strong><p>${item.description}</p><span>READ ↗</span></a>`).join('')}</section>` : ''}
     </div>`;
 }
 
@@ -272,3 +274,6 @@ if (page === 'home') renderHome();
 if (page === 'finds') renderFinds();
 if (page === 'archive') renderArchive();
 try { localStorage.removeItem('archfndr-language'); } catch (_) {}
+
+const requestedTrack = new URLSearchParams(location.search).get('track');
+if (requestedTrack && drawer) { const match = TRACKS.find(track => track.slug === requestedTrack); if (match) openDrawer(match.id); }
