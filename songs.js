@@ -166,10 +166,10 @@ window.ARCHFNDR_TRACKS = [
         "url": "/context/2hollis-pirouette/"
       },
       {
-        "title": "Home with 2Hollis",
+        "title": "2hollis",
         "type": "REFERENCE",
-        "description": "i-D · 2026.09.15",
-        "url": "/context/?type=reference#id-home"
+        "description": "인터뷰, 앨범 비평 및 공식 자료 4개.",
+        "url": "/context/?type=reference#reference-2hollis"
       }
     ]
   }

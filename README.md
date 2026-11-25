@@ -12,3 +12,5 @@ GitHub Pages: `main` / root (`archfndr.kr`).
 
 ## CONTEXT
 `/context/`에는 FEATURE(심층 탐구), REVIEW(독자 비평), REFERENCE(외부 자료)를 둔다. 앨범 상세에는 짧은 소개와 `context` 배열로 연결된 글만 표시한다. REVIEW는 작성자가 직접 완성한 비평만 게시한다. 사진과 원문은 출처를 표시하며 사용 권한을 확인한다.
+
+REFERENCE는 아티스트마다 하나의 접이식 항목으로 묶고, 내부에 여러 원문 자료를 보관한다. 목록에는 아티스트 이름과 자료 수만 노출한다.
