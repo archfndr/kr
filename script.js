@@ -19,12 +19,10 @@ document.querySelectorAll('.brand-logo').forEach((logo) => {
 const TRACKS = window.ARCHFNDR_TRACKS || [];
 const body = document.body;
 const page = body.dataset.page || 'home';
-const langToggle = document.querySelector('.lang-toggle');
 const menuToggle = document.querySelector('.menu-toggle');
 const mainNav = document.querySelector('.main-nav');
 const drawer = document.getElementById('trackDrawer');
 const drawerContent = document.getElementById('drawerContent');
-let currentLanguage = 'en';
 let todaysTrack = null;
 
 function coverStyle(track) {
@@ -64,32 +62,6 @@ function getTodaysRecommend() {
   return pool[index];
 }
 
-function applyStaticLanguage() {
-  document.documentElement.lang = currentLanguage;
-  document.querySelectorAll('[data-en][data-ko]').forEach((el) => {
-    el.textContent = el.dataset[currentLanguage];
-  });
-  if (langToggle) {
-    const label = currentLanguage === 'en' ? '한국어로 보기' : 'View in English';
-    langToggle.setAttribute('aria-label', label);
-    langToggle.setAttribute('title', label);
-  }
-  if (page === 'home') renderHome();
-  if (page === 'finds') renderFinds();
-  if (page === 'archive') renderArchive();
-  if (drawer?.classList.contains('open')) {
-    const id = Number(drawer.dataset.trackId);
-    const track = TRACKS.find((item) => item.id === id);
-    if (track) renderDrawer(track);
-  }
-  try { localStorage.setItem('archfndr-language', currentLanguage); } catch (_) {}
-}
-
-function setLanguage(lang) {
-  currentLanguage = lang === 'ko' ? 'ko' : 'en';
-  applyStaticLanguage();
-}
-
 function visualCard(track) {
   const button = document.createElement('button');
   button.className = 'visual-card';
@@ -98,7 +70,7 @@ function visualCard(track) {
   button.innerHTML = `
     <div class="visual-art${toneClass(track)}" style='${coverStyle(track)}'></div>
     <div class="visual-meta">
-      <div><h3>${track.title}</h3><p>${track.artist}${track.kind === 'album' ? (currentLanguage === 'ko' ? ' · 앨범' : ' · ALBUM') : ''}</p></div>
+      <div><h3>${track.title}</h3><p>${track.artist}${track.kind === 'album' ? ' · ALBUM' : ''}</p></div>
     </div>`;
   button.addEventListener('click', () => openDrawer(track.id));
   return button;
@@ -119,8 +91,8 @@ function renderHome() {
   const featuredNote = document.getElementById('featuredNote');
 
   if (todaysTrack) {
-    const comment = todaysTrack.comment?.[currentLanguage] || todaysTrack.comment?.en || '';
-    const description = todaysTrack.description?.[currentLanguage] || todaysTrack.description?.en || '';
+    const comment = todaysTrack.comment || '';
+    const description = todaysTrack.description || '';
 
     if (todayHook) todayHook.textContent = comment ? `“${comment}”` : '';
     if (todayTitle) todayTitle.textContent = todaysTrack.title;
@@ -229,8 +201,8 @@ function renderArchive() {
 
 function renderDrawer(track) {
   if (!drawerContent) return;
-  const comment = track.comment[currentLanguage] || track.comment.en;
-  const description = track.description[currentLanguage] || track.description.en;
+  const comment = track.comment || '';
+  const description = track.description || '';
   const visual = track.storyImages?.[0] || track.cover || '';
   const visualStyle = visual ? `background-image:url("${visual}")` : '';
   drawerContent.innerHTML = `
@@ -238,7 +210,7 @@ function renderDrawer(track) {
       <section class="story-row">
         <div class="story-media${toneClass(track)}" style='${coverStyle(track)}'></div>
         <div class="story-copy">
-          <div class="drawer-kicker">${track.kind === 'album' ? (currentLanguage === 'ko' ? '앨범 큐레이션' : 'ALBUM CURATION') : 'CURATION'}</div>
+          <div class="drawer-kicker">${track.kind === 'album' ? 'ALBUM CURATION' : 'CURATION'}</div>
           <h2 class="drawer-title">${track.title}</h2>
           <p class="drawer-artist">${track.artist}</p>
           <div class="drawer-tags">${track.genres.map((genre) => `<span class="tag">${genre}</span>`).join('')}</div>
@@ -250,7 +222,7 @@ function renderDrawer(track) {
         <div class="story-copy">
           <p class="drawer-quote">“${comment}”</p>
           <p class="drawer-description">${description}</p>
-          ${track.story?.[currentLanguage]?.map((paragraph) => `<p class="drawer-description" style="margin-top:1em">${paragraph}</p>`).join('') || ''}
+          ${track.story?.map((paragraph) => `<p class="drawer-description" style="margin-top:1em">${paragraph}</p>`).join('') || ''}
           ${track.kind === 'album' ? '<p class="drawer-description" style="margin-top:1em;font-size:13px">Artwork: Yoshitaka Amano</p>' : ''}
         </div>
       </section>
@@ -283,7 +255,6 @@ function closeDrawer() {
   body.classList.remove('drawer-open');
 }
 
-langToggle?.addEventListener('click', () => setLanguage(currentLanguage === 'en' ? 'ko' : 'en'));
 menuToggle?.addEventListener('click', () => {
   mainNav?.classList.toggle('open');
 });
@@ -297,6 +268,7 @@ document.querySelectorAll('.main-nav a').forEach((link) => {
   if (link.getAttribute('href') === currentPath) link.classList.add('active');
 });
 
-let savedLanguage = 'en';
-try { savedLanguage = localStorage.getItem('archfndr-language') || 'en'; } catch (_) {}
-setLanguage(savedLanguage);
+if (page === 'home') renderHome();
+if (page === 'finds') renderFinds();
+if (page === 'archive') renderArchive();
+try { localStorage.removeItem('archfndr-language'); } catch (_) {}

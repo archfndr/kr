@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css?v=20260908-1">
+  <link rel="stylesheet" href="/style.css?v=20261125-2">
   <link rel="stylesheet" href="/home.css?v=20260908-1">
   <link rel="stylesheet" href="/nav.css?v=20260908-1">
 </head>
@@ -20,16 +20,15 @@
     <a class="brand" href="/" aria-label="ArchFndr home"><span class="brand-logo" aria-hidden="true"></span></a>
     <nav class="main-nav" aria-label="Primary navigation">
       <div class="nav-branch">
-        <button class="nav-branch-toggle" type="button" aria-expanded="false" aria-controls="findsSubmenu"><span data-en="FINDS" data-ko="발견">FINDS</span><span class="nav-branch-chevron" aria-hidden="true">›</span></button>
+        <button class="nav-branch-toggle" type="button" aria-expanded="false" aria-controls="findsSubmenu"><span>FINDS</span><span class="nav-branch-chevron" aria-hidden="true">›</span></button>
         <div class="nav-submenu" id="findsSubmenu">
-          <a href="/finds/song/" data-en="SONG" data-ko="노래">SONG</a>
-          <a href="/finds/artist/" data-en="ARTIST" data-ko="아티스트">ARTIST</a>
+          <a href="/finds/song/">SONG</a>
+          <a href="/finds/artist/">ARTIST</a>
         </div>
       </div>
-      <a href="/archive/" data-en="ARCHIVE" data-ko="아카이브">ARCHIVE</a>
+      <a href="/archive/">ARCHIVE</a>
     </nav>
     <div class="header-actions">
-      <button class="lang-toggle" type="button" aria-label="한국어로 보기" title="한국어로 보기"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"></path></svg></button>
       <button class="menu-toggle" type="button" aria-label="Open menu">MENU</button>
     </div>
   </header>
@@ -37,21 +36,21 @@
   <main>
     <section class="home-hero shell home-identity" id="homeIdentity">
       <div class="identity-lockup">
-        <h1 class="identity-meaning" data-en="ARCHIVE FINDER" data-ko="ARCHIVE FINDER">ARCHIVE FINDER</h1>
+        <h1 class="identity-meaning">ARCHIVE FINDER</h1>
       </div>
     </section>
 
     <section class="featured-reveal-section shell reveal-on-scroll" aria-label="Today's recommendation">
       <div class="today-recommend">
         <div class="today-recommend-head">
-          <span data-en="TODAY'S RECOMMEND" data-ko="오늘의 추천">TODAY'S RECOMMEND</span>
+          <span>TODAY'S RECOMMEND</span>
         </div>
         <div class="today-recommend-copy">
           <p class="today-hook" id="todayHook"></p>
           <h2 id="todayTitle"></h2>
           <p class="today-artist" id="todayArtist"></p>
           <p class="today-intro" id="todayIntro"></p>
-          <button class="today-open" id="todayOpen" type="button"><span data-en="OPEN CURATION" data-ko="큐레이션 보기">OPEN CURATION</span><span>↗</span></button>
+          <button class="today-open" id="todayOpen" type="button"><span>OPEN CURATION</span><span>↗</span></button>
         </div>
       </div>
 
@@ -65,7 +64,7 @@
     </section>
 
     <section class="home-preview shell reveal-on-scroll">
-      <div class="section-kicker"><span data-en="LATEST FINDS" data-ko="최근 발견">LATEST FINDS</span><a href="/finds/song/" data-en="VIEW ALL ↗" data-ko="전체 보기 ↗">VIEW ALL ↗</a></div>
+      <div class="section-kicker"><span>LATEST FINDS</span><a href="/finds/song/">VIEW ALL ↗</a></div>
       <div class="visual-grid preview-grid" id="homeGrid"></div>
     </section>
   </main>
@@ -82,8 +81,8 @@
   <aside class="track-drawer" id="trackDrawer" aria-hidden="true"><button class="drawer-backdrop" data-close-drawer aria-label="Close"></button><div class="drawer-panel"><button class="drawer-close" data-close-drawer aria-label="Close">×</button><div id="drawerContent"></div></div></aside>
   <script src="/media.js?v=20260908-1"></script>
   <script src="/baby-cover.js?v=20260908-1"></script>
-  <script src="/songs.js?v=20261125-1"></script>
-  <script src="/script.js?v=20261125-1"></script>
+  <script src="/songs.js?v=20261125-2"></script>
+  <script src="/script.js?v=20261125-2"></script>
   <script src="/nav.js?v=20260908-1"></script>
   <script src="/home.js?v=20260908-1"></script>
   <!-- Cloudflare Web Analytics -->

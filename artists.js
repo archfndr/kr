@@ -4,7 +4,6 @@
   const pagination = document.getElementById('artistPagination');
   if (!list) return;
 
-  const getLanguage = () => document.documentElement.lang === 'ko' ? 'ko' : 'en';
   const pageSize = 18;
 
   function getPageParam() {
@@ -55,19 +54,16 @@
   }
 
   function createArtistNode(artist) {
-    const lang = getLanguage();
     const node = document.createElement('article');
     node.className = 'artist-node';
 
     const albumCount = artist.albums.length;
     const songCount = artist.tracks.filter((track) => track.kind !== 'album').length;
-    const countText = lang === 'ko'
-      ? `앨범 ${albumCount} · 곡 ${songCount}`
-      : `${albumCount} ALBUM${albumCount === 1 ? '' : 'S'} · ${songCount} SONG${songCount === 1 ? '' : 'S'}`;
+    const countText = `${albumCount} ALBUM${albumCount === 1 ? '' : 'S'} · ${songCount} SONG${songCount === 1 ? '' : 'S'}`;
 
     const albumsMarkup = artist.albums.length
-      ? artist.albums.map((album) => { const feature = artist.tracks.find((track) => track.kind === 'album' && track.album === album); return feature ? `<button class="artist-song" type="button" data-track-id="${feature.id}"><span>${album}</span><small>${lang === 'ko' ? '앨범 큐레이션' : 'ALBUM CURATION'}</small></button>` : `<div class="artist-album">${album}</div>`; }).join('')
-      : `<div class="artist-empty">${lang === 'ko' ? '앨범 정보 없음' : 'NO ALBUM DATA YET'}</div>`;
+      ? artist.albums.map((album) => { const feature = artist.tracks.find((track) => track.kind === 'album' && track.album === album); return feature ? `<button class="artist-song" type="button" data-track-id="${feature.id}"><span>${album}</span><small>ALBUM CURATION</small></button>` : `<div class="artist-album">${album}</div>`; }).join('')
+      : `<div class="artist-empty">NO ALBUM DATA YET</div>`;
 
     const songsMarkup = artist.tracks.filter((track) => track.kind !== 'album').map((track) => `
       <button class="artist-song" type="button" data-track-id="${track.id}">
@@ -84,11 +80,11 @@
         <div class="artist-children-inner">
           <div class="artist-tree">
             <section>
-              <p class="artist-tree-label">${lang === 'ko' ? '앨범' : 'ALBUMS'}</p>
+              <p class="artist-tree-label">ALBUMS</p>
               <div class="artist-album-list">${albumsMarkup}</div>
             </section>
             <section>
-              <p class="artist-tree-label">${lang === 'ko' ? '노래' : 'SONGS'}</p>
+              <p class="artist-tree-label">SONGS</p>
               <div class="artist-song-list">${songsMarkup}</div>
             </section>
           </div>
@@ -127,10 +123,6 @@
     renderPagination(current, totalPages);
   }
 
-  const languageObserver = new MutationObserver((mutations) => {
-    if (mutations.some((mutation) => mutation.attributeName === 'lang')) render();
-  });
-  languageObserver.observe(document.documentElement, { attributes: true });
   window.addEventListener('popstate', render);
   render();
 })();

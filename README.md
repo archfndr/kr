@@ -1,30 +1,11 @@
-# ARCHFNDR v1
+# ARCHFNDR
 
-## GitHub Pages 업로드
-1. ZIP 압축 해제
-2. 저장소에서 Add file → Upload files
-3. 파일 전부 업로드 후 Commit changes
-4. Settings → Pages → Deploy from a branch
-5. main / root 선택
+GitHub Pages: `main` / root (`archfndr.kr`).
 
-## 새 곡 추가
-1. 커버 이미지를 assets 폴더에 업로드
-2. songs.js 배열 맨 위에 아래 형식으로 추가
+## 편집 언어
+- 메뉴, 카테고리, 버튼은 영어로 유지한다.
+- 곡·앨범 이름과 아티스트 이름은 원어를 유지한다.
+- 소개, 훅, 큐레이션 본문은 한국어로 작성한다. 번역 버전은 별도로 만들지 않는다.
 
-```js
-{
-  date: "2026-07-30",
-  title: "곡 제목",
-  artist: "아티스트",
-  album: "앨범명",
-  released: "발매연도",
-  cover: "assets/new-cover.jpg",
-  comment: "한 줄 코멘트",
-  description: `추가 코멘트`,
-  spotify: "Spotify 링크",
-  apple: "Apple Music 링크",
-  youtube: "YouTube 링크"
-},
-```
-
-맨 위 곡이 Today's Pick, 이전 곡은 Archive에 자동 표시됩니다.
+## 콘텐츠 추가
+`songs.js`의 `window.ARCHFNDR_TRACKS` 배열에 고유 id와 slug를 지정한다. `comment`와 `description`은 한국어 문자열, 긴 본문 `story`는 한국어 문자열 배열이다. 장르와 커버, 플랫폼 링크를 지정한다. 앨범은 `kind: 'album'`을 지정한다. 기존 추천 로직은 한국 날짜를 기준으로 순환한다.
